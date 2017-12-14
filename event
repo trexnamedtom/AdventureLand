@@ -11,10 +11,6 @@ var target;
 
 setInterval(function()
 {
-	snowman = get_nearest_monster({
-		min_xp: 12000,
-		max_att: 100,});
-	
 	target = get_targeted_monster();
 	
 	snowman_Map = on_game_event(event);
@@ -29,7 +25,7 @@ setInterval(function()
 		}
 	}
 	
-	if(array && !snowman)
+	if(array && !target)
 	{
 		if(counter > array.length-1)
 		{
@@ -45,9 +41,8 @@ setInterval(function()
 			counter++;
 		}	
 	}
-	else if(snowman)
+	else if(target)
 	{
-		target = snowman;
 		if(target && !in_attack_range(target))
 		{
 			if ( can_move_to(character.real_x + (target.real_x-
@@ -69,19 +64,32 @@ setInterval(function()
 				}
 			}
 		}
-		if (can_attack(target))
-		{
-			attack(target);	
-		}
 	}
 
 },1);
+
+setInterval(function()
+{
+	target = get_targeted_monster();
+	snowman = get_nearest_monster({type:"snowman"});
+	
+	if(!target)
+	{
+		target = snowman;
+	}
+	
+	if (can_attack(target))
+	{
+		attack(target);	
+	}
+},1);
+
 
 function on_game_event(event)
 {
 	if(event.name=="snowman")
 	{
-		show_json(event);
+		//show_json(event);
 		//show_json(event.map);
 		//show_json(parent.G.maps[event.map]);
 		return event.map;
@@ -98,3 +106,4 @@ function fill_array(map)
 	}
 	return the_array;
 }
+
