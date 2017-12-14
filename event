@@ -1,0 +1,100 @@
+//	Event //
+
+//show_json(parent.G.maps["winterland"].monsters[0]);
+var snowman_Map;
+var monster;
+var array;
+var array_map;
+var counter = 7;
+var snowman;
+var target;
+
+setInterval(function()
+{
+	snowman = get_nearest_monster({
+		min_xp: 12000,
+		max_att: 100,});
+	
+	target = get_targeted_monster();
+	
+	snowman_Map = on_game_event(event);
+	//snowman_Map = "winterland";
+	if(snowman_Map)
+	{
+		if(!array || array_map != snowman_Map || !array_map)
+		{
+			array = fill_array(snowman_Map);
+			//show_json(array);
+			array_map = snowman_Map;
+		}
+	}
+	
+	if(array && !snowman)
+	{
+		if(counter > array.length-1)
+		{
+			counter = 0;
+		}
+		if(!smart.moving && !smart.searching)
+		{
+			smart_move({map: array_map,
+					x: (array[counter].boundary[0]+array[counter].boundary[2])/2,
+					y: (array[counter].boundary[1]+array[counter].boundary[3])/2},
+					   function () { pathing = false; smart.moving = false;
+									smart.searching = false; });
+			counter++;
+		}	
+	}
+	else if(snowman)
+	{
+		target = snowman;
+		if(target && !in_attack_range(target))
+		{
+			if ( can_move_to(character.real_x + (target.real_x-
+												 character.real_x),
+							 character.real_y + (target.real_y-
+												 character.real_y))) {
+				smart.moving = false;
+				smart.searching = false;
+				move(
+					character.real_x + (target.real_x - character.real_x) / 4,
+					character.real_y + (target.real_y - character.real_y) / 4
+				);
+			}
+			else {
+				if (!smart.searching && !smart.moving) {
+					smart_move({ x: target.real_x, y: target.real_y }, 
+							   function () { pathing = false; smart.moving = false;
+											smart.searching = false; });
+				}
+			}
+		}
+		if (can_attack(target))
+		{
+			attack(target);	
+		}
+	}
+
+},1);
+
+function on_game_event(event)
+{
+	if(event.name=="snowman")
+	{
+		show_json(event);
+		//show_json(event.map);
+		//show_json(parent.G.maps[event.map]);
+		return event.map;
+	}
+}
+
+function fill_array(map)
+{
+	var the_array = [];
+	for(monsterID in parent.G.maps[map].monsters)
+	{
+		monster = parent.G.maps[map].monsters[monsterID];
+		the_array.push(monster);
+	}
+	return the_array;
+}
