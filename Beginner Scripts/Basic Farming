@@ -27,7 +27,7 @@ setInterval(function(){
 	if(!target)
 	{
 		// Find a new target
-		target=get_nearest_monster({min_xp:100,max_att:120});
+		target = get_nearest_monster({type: "goo"});
 		
 		// Did you find a new monster?
 		if(target) 
