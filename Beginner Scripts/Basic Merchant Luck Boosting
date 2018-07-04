@@ -1,17 +1,18 @@
+//this code allows your merchant to give luck boosts to anyone within your range
+
 setInterval(function(){
 	
-	for(id in parent.entities)
+	for(id in parent.entities)	//searches everyone nearby
 	{
 		var current = parent.entities[id];
 
-		if(current && current.type == 'character' && !current.npc)
+		if(current && current.type == 'character' && !current.npc)	//makes sure its a player
 		{
-			//change_target(current);
-			if(current.s.mluck)
+			if(current.s.mluck)	//determines if they already have a mluck boost
 			{
-				if(current.s.mluck.f && current.s.mluck.f != character.name)
+				if(current.s.mluck.f && current.s.mluck.f != character.name)	//checks to see if the boost is from you
 				{
-					if(can_attack(current))
+					if(can_attack(current))		//boosts them if they are in range
 					{
 						luck(current);
 					}
@@ -19,7 +20,7 @@ setInterval(function(){
 			}
 			else
 			{
-				if(can_attack(current))
+				if(can_attack(current))		//if they dont already have a boost then boost them
 				{
 					luck(current);
 				}
