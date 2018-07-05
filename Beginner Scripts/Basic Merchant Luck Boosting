@@ -36,7 +36,7 @@ function luck(target){
 	// Luck only if not on cd (cd is .1sec).
 	if((new Date() - lastluck > 100)){
 		parent.socket.emit("skill", {name: "mluck", id: target.id});
-		set_message("Lucky " + target.mtype);
+		set_message("Lucky " + target.name);
 		lastluck = new Date();
 	}
 	
