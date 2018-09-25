@@ -1,18 +1,26 @@
-//this code allows your merchant to give luck boosts to anyone within your range
+//this code allows your merchant to give luck boosts to anyone within range
 
 setInterval(function(){
 	
-	for(id in parent.entities)	//searches everyone nearby
+	//searches everyone nearby
+	for(id in parent.entities)
 	{
 		var current = parent.entities[id];
 
-		if(current && current.type == 'character' && !current.npc)	//makes sure its a player
+		//makes sure its a player
+		if(current && current.type == 'character' && !current.npc)
 		{
-			if(current.s.mluck)	//determines if they already have a mluck boost
+			//determines if they already have a mluck boost
+			if(current.s.mluck)
 			{
-				if(current.s.mluck.f && current.s.mluck.f != character.name)	//checks to see if the boost is from you
+				//checks to see if the boost is from you
+				if(current.s.mluck.f && current.s.mluck.f != character.name)
 				{
-					if(can_attack(current))		//boosts them if they are in range
+					//boosts them if they are in range
+					if(Math.sqrt((character.real_x-current.real_x)*
+								 (character.real_x-current.real_x)+
+								 (character.real_y-current.real_y)*
+								 (character.real_y-current.real_y)) < 320)
 					{
 						luck(current);
 					}
@@ -20,16 +28,18 @@ setInterval(function(){
 			}
 			else
 			{
-				if(can_attack(current))		//if they dont already have a boost then boost them
+				//if they dont already have a boost then boost them
+				if(Math.sqrt((character.real_x-current.real_x)*
+								 (character.real_x-current.real_x)+
+								 (character.real_y-current.real_y)*
+								 (character.real_y-current.real_y)) < 320)
 				{
 					luck(current);
 				}
 			}
 		}
-	}
-	
+	}	
 }, 50);
-
 
 var lastluck = new Date(0);
 function luck(target){ 
