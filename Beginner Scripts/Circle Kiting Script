@@ -2,6 +2,8 @@
 
 //This code picks a point and allows for 3 different characters to walk around it in a circle. 
 
+//Most of this code is from Spadars follow a recorded path code, i do not want to take credit for all of this
+
 var name1 = "characters name here";		//name of first character
 var name2 = "characters name here";		//name of second character
 var name3 = "characters name here";		//name of third character
