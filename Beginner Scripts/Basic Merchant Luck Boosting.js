@@ -1,5 +1,8 @@
 //this code allows your merchant to give luck boosts to anyone within range
 
+//list of players names which you do not want to luck boost
+var luckBlacklist = ['Put', 'Names', 'Here'];	
+
 setInterval(function(){
 	
 	//searches everyone nearby
@@ -7,28 +10,13 @@ setInterval(function(){
 	{
 		var current = parent.entities[id];
 
-		//makes sure its a player
-		if(current && current.type == 'character' && !current.npc)
+		//makes sure its a player, not a merchant and not in your blacklist
+		if(current && current.type == 'character' && !current.npc && current.ctype != "merchant" && !luckBlacklist.includes(current.name))
 		{
-			//determines if they already have a mluck boost
-			if(current.s.mluck)
+			//if they dont already have a boost
+			if(!current.s.mluck)
 			{
-				//checks to see if the boost is from you
-				if(current.s.mluck.f && current.s.mluck.f != character.name)
-				{
-					//boosts them if they are in range
-					if(Math.sqrt((character.real_x-current.real_x)*
-								 (character.real_x-current.real_x)+
-								 (character.real_y-current.real_y)*
-								 (character.real_y-current.real_y)) < 320)
-					{
-						luck(current);
-					}
-				}
-			}
-			else
-			{
-				//if they dont already have a boost then boost them
+				//if they are in range then boost them
 				if(Math.sqrt((character.real_x-current.real_x)*
 								 (character.real_x-current.real_x)+
 								 (character.real_y-current.real_y)*
