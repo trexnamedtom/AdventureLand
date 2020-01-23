@@ -1,10 +1,7 @@
 {
     "party1": {
-        "CrownsAnal": "ranger",
         "Trexnamedtom": "ranger",
         "Trexnamedtut": "mage",
-        "Trexnamedted": "priest",
-        "CrownSpam": "mage",
-        "CrownMage": "mage"
+        "Trexnamedted": "priest"
     }
 }
