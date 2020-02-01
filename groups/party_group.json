@@ -3,9 +3,11 @@
         "Trexnamedtom": "ranger",
         "Trexnamedtut": "mage",
         "Trexnamedted": "priest",
-        "Trexnamedtod": "merchant",
         "CrownSpam": "mage",
         "CrownMage": "mage",
-        "CrownsAnal": "ranger"
+        "CrownsAnal": "ranger",
+        "andriod1": "mage",
+        "andriod2": "mage",
+        "andriod3": "mage"
     }
 }
