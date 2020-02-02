@@ -1,7 +1,7 @@
 {
     "party1": {
         "Trexnamedtom": "ranger",
-        "Trexnamedtut": "mage",
+        "Pluu": "ranger",
         "Trexnamedted": "priest",
         "CrownSpam": "mage",
         "CrownMage": "mage",
@@ -9,5 +9,10 @@
         "android1": "mage",
         "android2": "mage",
         "android3": "mage"
+    },
+    "party2": {
+        "Trexnamedtut": "mage",
+        "Pluet ": "mage",
+        "Plu2 ": "mage"
     }
 }
