@@ -5,14 +5,12 @@
         "CrownSpam": "mage",
         "CrownMage": "mage",
         "CrownsAnal": "ranger",
-        "android1": "mage",
-        "android2": "mage",
-        "android3": "mage"
-    },
-    "party2": {
         "Trexnamedted": "priest",
         "Trexnamedtut": "mage",
         "Pluet": "mage",
         "Plu2": "mage"
+    },
+    "party2": {
+        "Trexnamedtod": "merchant"
     }
 }
