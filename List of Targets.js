@@ -1,5 +1,5 @@
-//set to monsters name or list of names (NOT mtype) or to "any"
-const monsterName = ["Goo", "Snowman"];
+//set to monsters name or list of mtype or to "any"
+const monsterName = ["goo", "snowman"];
 //if the list should only consist of monsters within your range (T/F)
 const inRange = true;
 
@@ -16,7 +16,7 @@ const coop = true;
 const noTarget = true;
 
 
-show_json(get_list_of_targets(monsterName, inRange, noTarget, hasTarget, targetParty, coop));
+
 function get_list_of_targets(monsterName, inRange, noTarget, hasTarget, targetParty, coop) {
     let list = [];		        //list of monsters
     let coopList = [];          //list of coop monsters
@@ -140,10 +140,10 @@ function monster_list_coop_filter(list) {
 }
 
 function monster_list_name_filter(monsterList, monsterName) {
-    let targetList = [];		//filtered list of monsters by names
+    let targetList = [];		//filtered list of monsters by mtypes
     for (id in monsterList) {
         let current = monsterList[id];
-        if (current && monsterName.includes(current.name)) {
+        if (current && monsterName.includes(current.mtype)) {
             targetList.push(current);
         }
     }
