@@ -1,11 +1,13 @@
 {
     "party1": {
         "Trexnamedtom": "ranger",
-        "Pluu": "ranger",
         "Trexnamedted": "priest",
         "Trexnamedtut": "mage",
-        "Pluet": "mage",
-        "Plu2": "mage"
+        "Trexnamedtim": "warrior",
+        "Trexnamedtex": "rogue",
+        "Trexnamedtes": "ranger",
+        "Trexnamedtay": "mage",
+        "Trexnamedteo": "paladin"
     },
     "party2": {
         "Trexnamedtod": "merchant"
